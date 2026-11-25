@@ -1,0 +1,70 @@
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+*.so
+*.dylib
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+.env/
+
+# ── Jupyter / IPython ─────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── Data ──────────────────────────────────────────────────────────────────────
+# Ignore all raw CSVs and pcaps (large dataset files)
+data/raw/**/*.csv
+data/raw/**/*.pcap
+data/raw/**/*.pdf
+data/processed/
+data/interim/
+data/external/
+
+# Keep the data folder structure
+!data/.gitkeep
+!data/raw/.gitkeep
+
+# ── Model artefacts ───────────────────────────────────────────────────────────
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+models/
+
+# ── Logs and outputs ──────────────────────────────────────────────────────────
+logs/
+runs/
+*.log
+*.out
+results/
+outputs/
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# ── IDEs / editors ────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Environment / secrets ─────────────────────────────────────────────────────
+.env
+.envrc
+*.pem
+*.key
+secrets/
