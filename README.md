@@ -46,13 +46,18 @@ ciciot-ids/
 │       ├── ... (34 attack/benign categories total)
 │       └── README_CSV.pdf       # Official dataset column documentation
 ├── docs/
-│   └── PHASE1.md                # Phase 1 documentation & verified dataset report
+│   ├── PHASE1.md                # Phase 1 documentation & verified dataset report
+│   └── PHASE2.md                # Phase 2 documentation & benchmark results
 ├── src/
 │   ├── check_csv.py             # Quick data-quality check for a single CSV
 │   ├── inspect_dataset.py       # Full dataset inspection (label distribution, dtypes, NaN/Inf)
-│   └── phase1/
-│       ├── 01_verify_csvs.py    # Phase 1 step 1: verify all 215 CSVs & schema
-│       └── 02_prepare_dataset.py# Phase 1 step 2: clean, deduplicate, split & balance
+│   ├── phase1/
+│   │   ├── 01_verify_csvs.py    # Phase 1 step 1: verify all 215 CSVs & schema
+│   │   └── 02_prepare_dataset.py# Phase 1 step 2: clean, deduplicate, split & balance
+│   └── phase2/
+│       ├── model.py             # Phase 2: CICIoTNet MLP & FlowPreprocessor
+│       ├── train.py             # Phase 2: train with weighted BCE & early stopping
+│       └── evaluate.py          # Phase 2: evaluate on 3.21M held-out test flows
 ├── ids_demo.py                  # End-to-end demo: synthetic data → train → evaluate → infer
 ├── .venv/                       # Python virtual environment (Python 3.9)
 └── README.md
@@ -107,6 +112,7 @@ The project is built as a series of explicit phases, each with its own documenta
 | Phase | Description | Docs |
 |---|---|---|
 | **Phase 1** | Real dataset preparation — verify CSVs, label mapping, clean & split | [docs/PHASE1.md](docs/PHASE1.md) |
+| **Phase 2** | Deep learning — `CICIoTNet` PyTorch model, evaluation & artifact export | [docs/PHASE2.md](docs/PHASE2.md) |
 
 ---
 
