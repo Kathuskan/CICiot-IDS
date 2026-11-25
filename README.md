@@ -11,6 +11,7 @@ A PyTorch-based binary intrusion detection system (IDS) trained on the **CICIoT2
 - [Dataset](#dataset)
 - [Features](#features)
 - [Setup](#setup)
+- [Phases](#phases)
 - [Usage](#usage)
 - [Model Architecture](#model-architecture)
 - [Results](#results)
@@ -44,9 +45,14 @@ ciciot-ids/
 │       │   └── DDoS-HTTP_Flood-.pcap.csv
 │       ├── ... (34 attack/benign categories total)
 │       └── README_CSV.pdf       # Official dataset column documentation
+├── docs/
+│   └── PHASE1.md                # Phase 1 documentation & verified dataset report
 ├── src/
 │   ├── check_csv.py             # Quick data-quality check for a single CSV
-│   └── inspect_dataset.py       # Full dataset inspection (label distribution, dtypes, NaN/Inf)
+│   ├── inspect_dataset.py       # Full dataset inspection (label distribution, dtypes, NaN/Inf)
+│   └── phase1/
+│       ├── 01_verify_csvs.py    # Phase 1 step 1: verify all 215 CSVs & schema
+│       └── 02_prepare_dataset.py# Phase 1 step 2: clean, deduplicate, split & balance
 ├── ids_demo.py                  # End-to-end demo: synthetic data → train → evaluate → infer
 ├── .venv/                       # Python virtual environment (Python 3.9)
 └── README.md
@@ -91,6 +97,16 @@ Each CSV contains **39 flow-level features** extracted from pcap captures:
 - **Chunked CSV inspection** — `check_csv.py` and `inspect_dataset.py` process arbitrarily large CSV files in 100 k-row chunks without exhausting memory
 - **Standard ML pipeline** — train/test split (80/20), z-score feature standardisation, binary cross-entropy loss
 - **Single-flow inference** — classify any new network flow with a single forward pass
+
+---
+
+## Phases
+
+The project is built as a series of explicit phases, each with its own documentation:
+
+| Phase | Description | Docs |
+|---|---|---|
+| **Phase 1** | Real dataset preparation — verify CSVs, label mapping, clean & split | [docs/PHASE1.md](docs/PHASE1.md) |
 
 ---
 
